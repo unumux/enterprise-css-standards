@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unum Enterprise Accessibility Standards</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="styles/site.min.css">
+</head>
+<body>
+    <header class="willow-page-header">
+        <div class="willow-page-header__navigation">
+            <nav class="willow-primary-nav">
+                <ul class="willow-primary-nav__list">               
+                    <li class="willow-primary-nav__item">
+                        <a class="willow-primary-nav__link" href="./index.html">
+                            General
+                        </a>
+                    </li>              
+                    <li class="willow-primary-nav__item">
+                        <a class="willow-primary-nav__link" href="./construction.html">
+                            CSS File Construction
+                        </a>
+                    </li>
+                    <li class="willow-primary-nav__item">
+                        <a class="willow-primary-nav__link" href="./formatting.html">
+                            CSS Rule Formatting
+                        </a>
+                    </li>
+                    <li class="willow-primary-nav__item">
+                        <a class="willow-primary-nav__link" href="./scss.html">
+                            SCSS Formatting
+                        </a>
+                    </li>  
+                    <li class="willow-primary-nav__item">
+                        <a class="willow-primary-nav__link--active" href="./print.html">
+                            Print Style Rules
+                        </a>
+                    </li>                                
+                </ul>
+            </nav>
+        </div>
+
+        <h1 class="willow-page-header__heading">
+            Unum Enterprise Accessibility Standards
+        </h1>
+        <h2 class="willow-page-header__subheading">
+            Print Stylesheet Best Practices and Rules
+        </h2>
+    </header>
+    <main class="willow-page-content">
+        <section class="willow-summary">
+            <h1 class="willow-summary__heading">Best Practices</h1>
+            <div class="willow-summary__content">
+                <ol>
+                    <li>Try to write print styles to elements rather than selectors. It is more important to target 
+                        as much code with as little css as possible than write more lines to address specific classes.
+                    </li>
+                    <li>
+                        The 'print' attribute, when used to invoke the print stylesheet, should help avoid any specificity conflicts.
+                        <code>
+                            <pre>
+    @media print {
+        body {
+            ...
+        }
+        h1 {
+            ...
+        }
+        img {
+            ...
+        }
+        ...
+    }
+                            </pre>
+                        </code>
+                        <p>
+                           <em>Some of the example rules <b>may</b> have to be repeated as necessary for any specifically styled content that might supercede it in specificity, and/or suffoxed with an !important tag.</em>
+                        </p>
+                    </li>
+                    <li>
+                        Include a print styles partial within the base elements file:
+                        <code>
+                            <pre>
+    //need a better path
+    @include: "print/print"; 
+                            </pre>
+                        </code>
+                    </li>
+                    <li>
+                        Make sure all font sizes are in points (printers render that better than px, ems or %s). 12pt is the most recommended:
+                        <code>
+                            <pre>
+    @media print {
+        body {
+            font-size: 12pt;
+        }
+        ...
+    }
+                            </pre>
+                        </code>
+                    </li>
+                    <li>
+                        Use a serif font for easier readability on paper:
+                        <code>
+                            <pre>
+    @media print {
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+        }
+        ...
+    }                                
+                            </pre>
+                        </code>
+                    </li>
+                    <li>
+                        Remove/reset background colors to white as a default, and any text as black for the printer:
+                        <code>
+                            <pre>
+    @media print {
+        body {
+            // or background-color: none;
+            background-color: #fff;
+            color: #000;
+        }
+        ...
+    }                               
+                            </pre>
+                        </code>
+                    </li>
+                    <li>
+                        If a margin is needed, use centimeters for printer ease:
+                        <code>
+                            <pre>
+    @media print {
+        body {
+            margin: 2cm;
+        }
+    }                               
+                            </pre>
+                        </code>
+                    </li>
+                    <li>
+                        Remove all images –especially any background images (logo Included):
+                        <code>
+                            <pre>
+    @media print {
+        img {
+            display: none;
+        }
+        ...
+    }                               
+                            </pre>
+                        </code>
+                    </li>
+                    <li>
+                        Specify rules to avoid breaking elements in certain places:
+                        <code>
+                            <pre>
+    @media print {
+        h2, h3 {
+            page-break-after: avoid;
+        }
+        ul, ol, dl {
+            page-break-inside: avoid;
+        }
+    }                               
+                            </pre>
+                        </code>
+                    </li>
+                    <li>
+                        You can also specify when to start a new page for elements in certain places:
+                        <code>
+                            <pre>
+    @media print {
+        //This is for a comments section 
+        //that a user may want to opt out of printing...
+        .comments {  
+            page-break-before: always;
+        }
+    }                               
+                            </pre>
+                        </code>
+                    </li>
+                </ol>               
+            </div>
+        </section>
+        <section class="willow-summary">
+            <h1 class="willow-summary__heading">Print Stylesheet Navigation</h1>
+            <div class="willow-summary__content">
+                <ol>
+                    <li>
+                        emove the navigation – it does not help you on a printed page
+                    </li>
+                    <li>
+                        You can keep breadcrumbs as a reference point to the page you were on when you printed; OR 
+                        This handy JS will insert the URL of the page you are on currently on the printed page:
+                        <code>
+                            <pre>
+    DomReady.ready(function () {
+        var footerPrintLink = window.location.href;
+        document.getElementsByClassName("printLink").append(footerPrintLink);
+    });                              
+                            </pre>
+                        </code>
+                        <p><em>This also requires "class=’printLink'" on an element in the footer</em></p>
+                    </li>
+                    <li>
+                        Enlarge the content area to fit on an 8.5 x 11 piece of paper:
+                        <code>
+                            <pre>
+    @media print {
+        body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }                               
+                            </pre>
+                        </code>
+                    </li>
+                    <li>
+                        Add back any global styles that you would like to add in order to 
+                        mirror the look of the website (font-family, size, etc)
+                    </li>
+                </ol>
+            </div>
+        </section> 
+        <section class="willow-summary">
+            <h1 class="willow-summary__heading">Print Stylesheet Links</h1>
+            <div class="willow-summary__content">
+                <ol>
+                    <li>
+                        Add web URL or contact info to each page (ensure that carries over from footer or somewhere)
+                    </li>
+                    <li>
+                        Address hyperlinks by treating the linked text a little differently (underline etc) 
+                        and appending the link itself in the printout Use something like:
+                        <code>
+                            <pre>
+    * a:link:after {
+        content: " (" attr(href) ") ";
+        font-size: 9pt;
+        text-decoration: underline;
+    }
+
+    a[href^="/"]:after {
+        content: " (http://my.coloniallife.com" attr(href) ") ";
+    }                                
+                            </pre>
+                        </code>
+                        <p><em>The first method prints out URLS behind links for the web. The second one appends relative 
+                            links to the end of the URL that is within the parentheses.</em>
+                        </p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+        <section class="willow-summary">
+            <h1 class="willow-summary__heading">Print Floats</h1>
+            <div class="willow-summary__content">
+                <ol>
+                    <li>
+                        Floats that contain more than 1 page of information have a tendency to <em>not</em> print out 
+                        after the first page. To adress that issue, set the float of the target element to ‘none’.
+                        This puts the content of the float back in the normal doc flow. 
+                        For example: '.example-class { float: none !important; }' Only add '!important' if necessary. 
+                    </li>
+                    <li>
+                        Use margins for all spatial requirements. Some browsers do not handle padding well for print.
+                    </li>
+                </ol>
+            </div>
+        </section>          
+    </main>
+    <script src="scripts/site.min.js"></script>
+</body>
+</html>

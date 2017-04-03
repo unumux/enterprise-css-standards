@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unum Enterprise Accessibility States and Properties</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/site.min.css">
+</head>
+<body>
+    <header class="willow-page-header">
+        <div class="willow-page-header__navigation">
+            <nav class="willow-primary-nav">
+                <ul class="willow-primary-nav__list">               
+                    <li class="willow-primary-nav__item">
+                        <a class="willow-primary-nav__link" href="./index.html">
+                            General
+                        </a>
+                    </li>              
+                    <li class="willow-primary-nav__item">
+                        <a class="willow-primary-nav__link" href="./construction.html">
+                            CSS File Construction
+                        </a>
+                    </li>
+                    <li class="willow-primary-nav__item">
+                        <a class="willow-primary-nav__link" href="./formatting.html">
+                            CSS Rule Formatting
+                        </a>
+                    </li>
+                    <li class="willow-primary-nav__item">
+                        <a class="willow-primary-nav__link--active" href="./scss.html">
+                            SCSS Formatting
+                        </a>
+                    </li> 
+                    <li class="willow-primary-nav__item">
+                        <a class="willow-primary-nav__link" href="./print.html">
+                            Print Style Rules
+                        </a>
+                    </li>                                 
+                </ul>
+            </nav>
+        </div>
+
+        <h1 class="willow-page-header__heading">
+            Unum Enterprise Accessibility Standards
+        </h1>
+        <h2 class="willow-page-header__subheading">
+            SCSS Formatting
+        </h2>
+    </header>
+    <main class="willow-page-content">
+        <section class="willow-summary">
+            <h1 class="willow-summary__heading">
+                SCSS Standard Project Folder Structure
+            </h1>
+            <div class="willow-summary__content">
+
+                <ul>
+                    <li>
+                        The standard project structure sould mirror this <a href="https://github.com/unumux/standard-project-structure#standard-project-structure" target="_blank">standard project structure</a> located in github. 
+                        <ol>
+                            <li>Only one .css file in the root (minified)</li>
+                            <li>Only one .scss file in the root</li>
+                            <li>Two Sibling folders: 'Components' and 'Theme'</li>
+                        </ol>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section class="willow-summary">
+            <h1 class="willow-summary__heading">
+                SCSS Standard Partial Structure
+            </h1>
+            <div class="willow-summary__content">
+
+                <ul>
+                    <li>
+                        All sass partials should be prefixed with an underscore and use the .scss file extension:                        <ol>
+                        <code>
+                            <pre>
+    _banner.scss
+                            </pre>
+                        </code>
+                        </ol>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section class="willow-summary">
+            <h1 class="willow-summary__heading">
+                SCSS Variables
+            </h1>
+            <div class="willow-summary__content">
+
+                <ol>
+                    <li>
+                        Variable names should not be how something looks, but rather what the something is responsible for:                       <ol>
+                        <code>
+                            <pre>
+   // This is ok:
+   $ocean: #00a3bb;
+
+   // This is better:
+   $primary-color: #00a3bb;
+
+   // This is even BETTER better:
+   $component-banner-background: $primary-color;
+                            </pre>
+                        </code>
+                        </ol>
+                    </li>
+                    <li>
+                        Use imported or already existing branding or theme colors as bases for your variables, 
+                        abstracted out and ensure you add 'default' at the end of any variables you create/use 
+                        that you might need to easily override in a later partial:
+                        <code>
+                            <pre>
+    // Variable from the 'descriptive-colors.scss' theme partial:
+    $color-ocean: #3baecc;
+
+    // Using the descriptive color in the theme palate:
+    $color-text-primary: $color-ocean !default;
+
+    // Using the theme palate color in a component variable:
+    $component-text-heading: $color-text-primary !default;                                
+                            </pre>
+                        </code>
+                    </li>
+                    <li>
+                        Don't name variables based on context:
+                        <code>
+                            <pre>
+    // Wrong
+    $background-color: $color-ocean !default; 
+
+    // Right
+    $color-text-primary: $color-ocean !default;                                
+                            </pre>
+                        </code>
+                    </li>
+                    <li>
+                        Create variables when the value is repeated more than once, 
+                        or the value is likely to be updated more than once, or all occurrences 
+                        of the value are tied to the variable.
+                    </li>
+                    <li>
+                        The !global flag should only be used when overriding a global var from a local scope.
+                    </li>
+                    <li>
+                        Variables across the whole scss codebase should be placed in their own file - this needs team discussion
+                    </li>
+                    <li>
+                        Set variables for breakpoints or create mixins that you can update easily - team discussion for actual implementation
+                    </li>
+                </ol>
+            </div>
+       </section>
+        <section class="willow-summary">
+            <h1 class="willow-summary__heading">
+                SCSS Mixins
+            </h1>
+            <div class="willow-summary__content">
+
+                <ol>
+                    <li>
+                        All .SCSS component-named partials should keep the base styles in a base mixin that is contained at the top of the document:
+                        <code>
+                            <pre>
+    // This is scss in an individual component root file - for ex. 'banner.scss'
+    @mixin base() {
+        text-align: center;
+    }
+     
+   .banner {
+        @include base;
+    }
+                            </pre>
+                        </code>
+                    </li>
+                    <li>
+                        Try to use mixins whenever possible for any groups of properties that are repeated and located together.
+                    </li>
+                    <li>
+                        Use mixins when things require parameters.
+                    </li>
+                    <li>
+                        Use mixins to change size.
+                    </li>
+                </ol>
+            </div>
+        </section>
+         <section class="willow-summary">
+            <h1 class="willow-summary__heading">
+                SCSS Selector Construction (Property:Value organization)
+            </h1>
+            <div class="willow-summary__content">
+                <ol>
+                    <li>
+                        @extends; 
+                        <ul>
+                            <li>Do not use in day to day code unless there is a need</li>
+                        </ul>
+                    </li>
+                    <li>
+                        @includes;
+                        <ul>
+                            <li>Should be at the top of the selector</li>
+                        </ul> 
+                    </li>
+                    <li>
+                        declaration list (property: name;);
+                    </li>
+                    <li>
+                        :pseudo-states/elements;
+                    </li>
+                    <li>
+                        media queries{};
+                    </li>
+                    <li>
+                        { nested elements {}};
+                    </li>
+                    <li>
+                        { nested classes {}};
+                    </li>
+                    <li>
+                        @imports; 
+                        <ul>
+                            <li>Should be at the bottom of the selector</li>
+                        </ul>
+                    </li>
+                    <li>
+                        repeat the above hierarchy within nested elements/classes.
+                    </li>
+                    <li>
+                        For a great example of this setup in context, <a href="" target="_blank">view our component scss setup</a> in our Willow Framework.
+                    </li>
+                </ol>
+            </div>
+        </section>
+    </main>
+    <script src="scripts/site.min.js"></script>
+</body>
+</html>

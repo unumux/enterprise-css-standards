@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unum Enterprise CSS Standards</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="styles/site.min.css">
+</head>
+<body>
+    <header class="willow-page-header">
+        <div class="willow-page-header__navigation">
+            <nav class="willow-primary-nav">
+                <ul class="willow-primary-nav__list">               
+                    <li class="willow-primary-nav__item">
+                        <a class="willow-primary-nav__link--active" href="./index.html">
+                            General
+                        </a>
+                    </li>               
+                    <li class="willow-primary-nav__item">
+                        <a class="willow-primary-nav__link" href="./construction.html">
+                            CSS File Construction
+                        </a>
+                    </li>
+                    <li class="willow-primary-nav__item">
+                        <a class="willow-primary-nav__link" href="./formatting.html">
+                            CSS Rule Formatting
+                        </a>
+                    </li>
+                    <li class="willow-primary-nav__item">
+                        <a class="willow-primary-nav__link" href="./scss.html">
+                            SCSS Formatting
+                        </a>
+                    </li>  
+                    <li class="willow-primary-nav__item">
+                        <a class="willow-primary-nav__link" href="./print.html">
+                            Print Style Rules
+                        </a>
+                    </li>                                
+                </ul>
+            </nav>
+        </div>
+        <h1 class="willow-page-header__heading">
+            Unum Enterprise CSS/SCSS Standards
+        </h1>
+        <h2 class="willow-page-header__subheading">
+            General CSS Guidelines
+        </h2>
+    </header>
+    <main class="willow-page-content">
+         <section class="willow-summary">
+            <h1 class="willow-summary__heading">Notes</h1>
+            <div class='willow-summary__content'>
+                <p>
+                    This document is a collection of enterprise standards and best practices regarding CSS and styling. 
+                    The purpose of this document is to be a single source of truth 
+                    for consistent CSS/SCSS across the enterprise, as well as a reference point 
+                    that developers may use to find information. 
+                    The goal is to provide a set of standards to help create a CSS/SCSS document 
+                    that is easy to read and easy to maintain. 
+                </p>          
+                <p>
+                    <em>This is a living document, and as such should be amended as real-life examples 
+                        are discovered and addressed</em>.
+                </p>
+            </div>
+        </section>
+        <section class="willow-summary">
+            <h1 class="willow-summary__heading">Guidelines</h1>
+            <div class='willow-summary__content'>
+                <ol>
+                    <li>
+                        Avoid using multiple stylesheets.                  
+                    </li>
+                    <li>
+                        CSS should be delivered to a page or site in a single, minified css file, linked in the head of the document.
+                    </li>
+
+                    <li>
+                        The CSS file should be cacheable, for a one time http request cost, rather than served as content and downloaded repeatedly.
+                    </li>
+                    <li>
+                        Avoid using '!important' to override styles.
+                    </li>
+                </ol>
+            </div>
+        </section>
+    </main>
+    <script src="scripts/site.min.js"></script>
+</body>
+</html>
