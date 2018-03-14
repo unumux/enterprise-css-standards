@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Unum Enterprise Accessibility States and Properties</title>
+    <title>Unum Enterprise CSS Standards</title>
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
@@ -15,203 +15,33 @@
             <nav class="willow-primary-nav">
                 <ul class="willow-primary-nav__list">               
                     <li class="willow-primary-nav__item">
-                        <a class="willow-primary-nav__link" href="./index.html">
-                            General
-                        </a>
+                        <a class="willow-primary-nav__link" href="./index.html">General</a>
                     </li>             
                     <li class="willow-primary-nav__item">
-                        <a class="willow-primary-nav__link" href="./construction.html">
-                            CSS File Construction
-                        </a>
+                        <a class="willow-primary-nav__link" href="./construction.html">CSS File Construction</a>
                     </li>
                     <li class="willow-primary-nav__item">
-                        <a class="willow-primary-nav__link--active" href="./states-and-properties.html">
-                            CSS Rule Formatting
-                        </a>
+                        <a class="willow-primary-nav__link--active" href="./states-and-properties.html">CSS Rule Formatting</a>
                     </li>
                     <li class="willow-primary-nav__item">
-                        <a class="willow-primary-nav__link" href="./scss.html">
-                            SCSS Formatting
-                        </a>
+                        <a class="willow-primary-nav__link" href="./scss.html">SCSS Formatting</a>
                     </li>  
                     <li class="willow-primary-nav__item">
-                        <a class="willow-primary-nav__link" href="./print.html">
-                            Print Style Rules
-                        </a>
+                        <a class="willow-primary-nav__link" href="./print.html">Print Style Rules</a>
                     </li>                                 
                 </ul>
             </nav>
         </div>
 
-        <h1 class="willow-page-header__heading">
-            Unum Enterprise CSS/SCSS Standards
-        </h1>
-        <h2 class="willow-page-header__subheading">
-            CSS Rule Formatting
-        </h2>
+        <h1 class="willow-page-header__heading">Unum Enterprise CSS/SCSS Standards</h1>
+        <h2 class="willow-page-header__subheading">CSS Rule Formatting</h2>
     </header>
     <main class="willow-page-content">
         <section class="willow-summary">
-            <h1 class="willow-summary__heading">
-                Spacing
-            </h1>
+            <h1 class="willow-summary__heading">Class Naming</h1>
             <div class="willow-summary__content">
                 <ol>
-                    <li>
-                        Tabs should equal 4 spaces                   
-                    </li>
-                    <li>
-                        Use a space between the opening brace and the class name:
-                        <code>
-                            <pre>
-    // Wrong
-    .example-class{...}
-
-    // Right
-    .example-class {...}
-                            </pre>
-                        </code>
-                    </li>
-                    <li>
-                        Vendor prefixes should be aligned:
-                        <code>
-                            <pre>
-    .example-class {
-        -webkit-border-radius: 3px;
-           -moz-border-radius: 3px;
-                border-radius: 3px;
-      }
-                            </pre>
-                        </code>
-                        
-                    </li>
-                    <li>
-                        Combinators (and any calc or SCSS computations) should have a space before and after:
-                        <code>
-                            <pre>
-    .example-class > .example-class {
-        height: calc(50% - 1rem);
-    }
-                            </pre>
-                        </code>
-                        
-                    </li>
-                    <li>
-                        Ensure all calculations are wrapped in parentheses:
-                        <code>
-                            <pre>
-    .example-class {
-        width: calc(100vw / 2);
-    }
-                            </pre>
-                        </code>
-                        
-                    </li>
-                    <li>
-                        Closing selector braces should be in line with the selector name and on their own line:
-                        <code>
-                            <pre>
-    .example-class {
-        color: #fff;
-    } // This brace should be in line with the namespace
-                            </pre>
-                        </code>
-                    </li>                     
-                </ol>
-            </div>
-        </section>
-        <section  class="willow-summary">
-            <h1 class="willow-summary__heading">
-                Measurements
-            </h1>
-            <div class="willow-summary__content">
-
-                <ol>
-                    <li>Use percentages when layout components stay relational to each other (like a component that always takes up 75% of the screen and a second one that always takes up 25%)</li> 
-                    <li>Use pixel(px) units for when measurement should not change based on user-set font size or browser zooming.</li>
-                    <li>Use rem units for font sizes.</li>
-                    <li>Use <em><b>up to</b></em> 10 decimal places in em units to ensure accuracy - if you choose to do so, 
-                        it will eliminate some of the browser-specific calculation fluctuations based on resizing and 
-                        percent widths etc.</li>
-                    <li>Use units when measuring dimensions (margins, borders, padding etc).</li>
-                </ol>
-                
-            </div>
-        </section>
-       <section class="willow-summary">
-            <h1 class="willow-summary__heading">
-                Property Declaration Order
-            </h1>
-            <div class="willow-summary__content">
-                <ol>
-                    <li>
-                        for a full list of all SCSS properties and their orders, <a href="./scss.html" target="_blank">read the SCSS properties</a>.
-                    </li> 
-                    <li>
-                        Property declaration should be alphabetical
-                    </li> 
-                    <li>
-                        Property declarations should not be written in shorthand. Common overused shorthand properties include:
-                        <ul>
-                            <li>padding</li>
-                            <li>margin</li>
-                            <li>font</li>
-                            <li>background</li>
-                            <li>border</li>
-                            <li>border-radius</li>
-                        </ul>
-                        <code>
-                            <pre>
-    // Wrong
-    .example-class {
-        padding: 0 0 1rem 0;
-    }
-    
-    // Right
-    .example-class {
-        padding-bottom: 0;
-        padding-left: 0;
-        padding-right: 0;
-        padding-top: 1rem;
-    }
-                            </pre>
-                        </code>                        
-                    </li> 
-                    <li>
-                        Only include properties being used in rule declarations. For example, if there are no styles necessary for 'border-top', then do not declare it in the rule.
-                    </li> 
-                    <li>
-                        Remove empty rulesets
-                    </li> 
-                    <li>
-                        Selectors and declarations should be written on single lines:
-                        <code>
-                            <pre>
-    .a,
-    .h4,
-    .p {
-        color: blue;
-        font-size: 1.25rem;
-    }
-                            </pre>
-                        </code>
-                    </li> 
-                    <li>
-                        Rulesets should have an empty line between them:
-                        <code>
-                            <pre>
-    .example-class {
-        property-name: value;
-    }
-  
-    .example-class {
-        property-name: value;
-    }
-                            </pre>
-                        </code>
-                    </li> 
-                    <li>
-                        Use all lowercase when creating a class or variable, or when referencing a div or element:
+                    <li>Use all lowercase when creating a class or variable, or when referencing a div or element:
                         <code>
                             <pre>
     .example-class {...}
@@ -220,8 +50,7 @@
                             </pre>
                         </code>
                     </li>  
-                    <li>
-                        Use dashes over camelCasing in class names. Underscores are used as part of the BEM methodology.
+                    <li>Use dashes over camelCasing in class names. Underscores are used as part of the BEM methodology.
                         <code>
                             <pre>
     // This is a good -if verbose- example:
@@ -232,50 +61,270 @@
                             </pre>
                         </code>
                     </li>  
-                    <li>
-                        Use double quotes for properties:
+                </ol>
+            </div>
+        </section>
+        <section class="willow-summary">
+            <h1 class="willow-summary__heading">Spacing</h1>
+            <div class="willow-summary__content">
+                <ol>
+                    <li>Tabs should equal 4 spaces                   
+                    </li>
+                    <li>Use a space between the opening brace and the class name:
                         <code>
                             <pre>
-    .example-class__heading--positive {
-        font-family: "Open Sans", helvetica, sans-serif;
-        background-image: url("/images/logo.jpg");
+    // Wrong
+    .example-class{
+        property: value;
+    }
+
+    // Right
+    .example-class {
+        property: value;
+    }
+                            </pre>
+                        </code>
+                    </li>
+                    <li>Vendor prefixes should be right aligned:
+                        <code>
+                            <pre>
+    // Wrong
+    .example-class {
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+    
+    // Right                            
+    .example-class {
+        -webkit-border-radius: 3px;
+           -moz-border-radius: 3px;
+                border-radius: 3px;
+      }
+                            </pre>
+                        </code>
+                    </li>
+                    <li>Combinators should have a space before and after:
+                        <code>
+                            <pre>
+    // Wrong
+    .example-class>.example-class {
+        height: calc(50%-1rem);
+    }
+
+    // Right
+    .example-class > .example-class {
+        height: calc(50% - 1rem);
+    }
+                            </pre>
+                        </code>                        
+                    </li>
+                    <li>Ensure all calculations are wrapped in parentheses:
+                        <code>
+                            <pre>
+    .example-class {
+        width: calc(100vw / 2);
+    }
+                            </pre>
+                        </code>
+                    </li>
+                    <li>Closing selector braces should be in line with the selector name and on their own line:
+                        <code>
+                            <pre>
+    //Wrong
+    .example-class {
+        property: value;}
+    
+    .example-class {
+        property: value;
+}
+    // Right
+    .example-class {
+        property: value;
+    }
+                            </pre>
+                        </code>
+                    </li>                     
+                </ol>
+            </div>
+        </section>
+        <section  class="willow-summary">
+            <h1 class="willow-summary__heading">Measurement Units</h1>
+            <div class="willow-summary__content">
+                <ol>
+                    <li>Use percentages when layout components stay relational to each other (like a component that always takes up 75% of the screen and a second one that always takes up 25%)</li> 
+                    <li>Use pixel(px) units for when measurement should not change based on user-set font size or browser zooming.</li>
+                    <li>Use rem units for font sizes.</li>
+                    <li>Use <em><b>up to</b></em> 10 decimal places in em units to ensure accuracy - if you choose to do so, it will eliminate some of the browser-specific calculation fluctuations based on resizing and percent widths etc.</li>
+                    <li>Use units when measuring dimensions (margins, borders, padding etc).</li>
+                </ol>
+            </div>
+        </section>
+       <section class="willow-summary">
+            <h1 class="willow-summary__heading">Property Declaration Order</h1>
+            <div class="willow-summary__content">
+                <ol>
+                    <li>Property declaration should be alphabetical
+                    <code>
+                            <pre>
+    // Wrong
+    .example-class {
+        display: block;
+        padding: 10px;
+        margin: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+    
+    // Right
+    .example-class {
+        background-color: #fff;
+        border-radius: 5px;
+        display: block;
+        margin: 10px;
+        padding: 10px;
+    }
+                            </pre>
+                        </code>          
+                    </li> 
+                    <li>Using shorthand on some CSS properties can get confusing. Avoid shorthand declarations for these properties: 
+                        <ul>
+                            <li>background</li>
+                            <li>font</li>
+                            <li>list-style</li>
+                        </ul>
+                        <code>
+                            <pre>
+    // Wrong
+    .example-class {
+        background: #000 url("images/bg.jpg") no-repeat 50% 100px;
+        font: italic 12px/1.5 sans-serif;
+        list-style: url("images/shape.jpg") outside;
+    }
+    
+    // Right
+    .example-class {
+        background-color: #000;
+        background-image: url(images/bg.jpg);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: 100px;
+        font-family: sans-serif;
+        font-size: 12px;
+        font-style: italic;
+        line-height: 1.5;
+        list-style-image: url("images/shape.jpg");
+        list-style-position: outside;
+    }
+                            </pre>
+                        </code>                        
+                    </li> 
+                    <li>Only include properties being used in rule declarations. For example, if there are no styles necessary for 'border-top', then do not declare it in the rule.</li> 
+                    <li>Remove empty rulesets</li> 
+                    <li>Selectors and declarations should be written on separate lines:
+                        <code>
+                            <pre>
+    // Wrong
+    .example, .example-class {
+        property: value;
+    }
+    
+    // Right
+    .example,
+    .example-class {
+        property: value;
     }
                             </pre>
                         </code>
                     </li> 
-                    <li>
-                        All property-value pairs should be on a new line, indented once and have an ending semi-colon:
+                    <li>Rulesets should have an empty line between them:
+                        <code>
+                            <pre>
+    // Wrong
+    .example-class {
+        property: value;
+    }
+    .example-class {
+        property: value;
+    }
+    
+    //Right
+    .example-class {
+        property: value;
+    }
+  
+    .example-class {
+        property: value;
+    }
+                            </pre>
+                        </code>
+                    </li> 
+                    <li>Use double quotes for properties:
                         <code>
                             <pre>
     .example-class {
-        color: #fff;
-        font-weight: 300;
-        text-decoration: underline;
+        background-image: url("/images/logo.jpg");
+        font-family: "Open Sans";
+    }
+                            </pre>
+                        </code>
+                    </li> 
+                    <li>All property-value pairs should be on separate lines, indented once and have an ending semi-colon:
+                        <code>
+                            <pre>
+    // Wrong
+    .example-class {
+        property: value; property: value;
+    }                            
+
+    // Right
+    .example-class {
+        property: value;
+        property: value;
     }                            
                             </pre>
                         </code>
                     </li> 
-                    <li>
-                        Any comma-separated property values should have a space after each comma.
+                    <li>Any comma-separated property values should have a space after each comma.
+                        <code>
+                            <pre>
+    // Wrong
+    .example-class {
+        property: value,value;
+    }                            
+
+    // Right
+    .example-class {
+        property: value, value;
+    }                            
+                            </pre>
+                        </code>
                     </li> 
-                    <li>
-                        Do not include spaces after commas within () values (like rgb(), rgba() etc).
-                    </li>                                                                                                                                                                                                                                                                                                         
+                    <li>Do not include spaces after commas for values wrapped in parentheses
+                        <code>
+                            <pre>
+    // Wrong
+    .example-class {
+        property: value(value-1, value-2);
+    }                            
+
+    // Right
+    .example-class {
+        property: value(value-1,value-2);
+    }                            
+                            </pre>
+                        </code>
+                    </li>                                    
                 </ol>
             </div>
        </section>
 
         <section class="willow-summary">
-            <h1 class="willow-summary__heading">
-                Colors
-            </h1>
+            <h1 class="willow-summary__heading">Colors</h1>
             <div class="willow-summary__content">
                 <ol>
-                    <li>
-                        Hexadecimal codes should be in lowercase
-                    </li>
-                    <li>
-                        Use shorthand hex notation where available:
+                    <li>Hexadecimal codes should be in lowercase</li>
+                    <li>Use shorthand hex notation where available:
                         <code>
                             <pre>
     .example-class {
@@ -291,50 +340,56 @@
                             </pre>
                         </code>
                     </li>
-                    <li>Do not use named colors:
+                    <li>Do not use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" target="_blank">keyword colors</a>
                         <code>
                             <pre>
     // Wrong
     .example-class {
-        color: blue;   
+        color: MistyRose;   
     }                               
                             </pre>
                         </code>
-                    </li>
-                    <li>
-                        For examples of color variables, see the section in <a href="" target="_blank">SCSS Color Variables</a>
                     </li>
                 </ol>
             </div>
         </section>
         <section  class="willow-summary">
-            <h1 class="willow-summary__heading">
-                Comments
-            </h1>
+            <h1 class="willow-summary__heading">Comments</h1>
             <div class="willow-summary__content">
                 <ol>
-                    <li>
-                        Well-commented code is important, take time to properly describe what the code does, limitations, construction etc.
-                    </li>
-                    <li>
-                        If using SCSS, try to use single line comments (//) over block comments (/* ... */). 
+                    <li>Well-commented code is important, take time to properly describe what the code does, limitations, construction etc.</li>
+                    <li>If using SCSS, try to use single line comments (//) over block comments (/* ... */). 
                         <ul>
                             <li>
                                 <em>Note: CSS does not permit single line comments</em>.
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        Put comments on their own line above the class or declaration in question, and avoid end-of-line comments
-                    </li>
+                    <li>Put comments on their own line above the class or declaration in question, and avoid end-of-line comments</li>
                     <li>Write detailed comments for code that isn't self-documenting:
                         <ul>
                             <li>Documenting uses of z-index</li>
                             <li>Compatibility or browser-specific hacks</li>
                         </ul>
                     </li>
-                    <li>Ensure comments are user-friendly (can easily be understood by other devs)</li>
-                    <li>highlight purpose or context of item being explained in comment:
+                    <li>Write comments that are easy for other developers to understand
+                        <code>
+                            <pre>
+    // Wrong
+    // z-index so it is on top
+    .example-class {
+        z-index: 100;
+    }
+
+    // Right
+    // z-index required because of bug with IE9 (www.link-to-the-bug-documentation.com)
+    .example-class {
+        z-index: 100;
+    }                                
+                            </pre>
+                        </code>
+                    </li>
+                    <li>Highlight purpose or context of item being explained in comment:
                         <code>
                             <pre>
     // Wrong
@@ -358,111 +413,119 @@
                         </code>
                     </li>
                 </ol>
-               
             </div>
         </section>
         <section class="willow-summary">
-            <h1 class="willow-summary__heading">
-                Fonts
-            </h1>
+            <h1 class="willow-summary__heading">Fonts</h1>
             <div class="willow-summary__content">
                 <ol>
-                    <li>
-                        Use number values for font weights, not words.
-                    </li>
-                    <li>
-                        Use rem units for font sizes with a px fallback. 18f example with mixin.
-                    </li>
-                    <li>
-                        Set the HTML element font size to a default size (10px) so .1rem = 1px for easier to maintain calculation later on.
-                    </li>
-                </ol>
-            </div>
-        </section>
-       <section class="willow-summary">
-            <h1 class="willow-summary__heading">
-                Media Queries
-            </h1>
-            <div class="willow-summary__content">
-                <ol>
-                    <li>
-                        Try to specify in the rule what your MQ is for (screen, tv, handheld etc) so it will not be applied to ALL stylesheets:
-                        <code>
-                            <pre>
-    .example-class {...}
-    
-    @media screen (min-width: 680px) {
-       .example-class {...}
-    }                               
-                            </pre>
-                        </code>
-                    </li>
-                    <li>
-                        Use relative units for MQ's, avoid using pixel-based units.
-                    </li>
-                    <li>
-                        Place media queries as close to relevant rulesets as possible. 
-                        Do not bundle them in a separate stylesheet(print is an exception) or bunch them at the bottom of the doc:
-                        <code>
-                            <pre>
-    .example-class {...}
-    
-    @media screen (min-width: 680px) {
-       .example-class {...}
-    }
-                            </pre>
-                        </code>
-                    </li>
-                    <li>
-                        Using SCSS you should nest your MQ in the relevant class:
-                        <code>
-                            <pre>
-    .example-class {
-        background-color: lighten($primary-component-background, 10%);
-    
-        @media screen (min-width: 680px) {
-            background-color: $primary-component-background;
-        } 
-    }
-                            </pre>
-                        </code>
-                        <em>Note: this will compile to the same structure as #3 example above.</em>
-                    </li>
-                    <li>
-                        Use variables to set your MQs throughout so they are easy to manage and update
-                    </li>
-                    <li>
-                        Avoid(if possible) using an arbitrary number of media queries or breakpoints
-                    </li>
-                </ol>
-            </div>
-       </section>
-       <section class="willow-summary">
-            <h1 class="willow-summary__heading">
-                Values
-            </h1>
-            <div class="willow-summary__content">
-                <ol>
-                    <li>
-                        Avoid using arbitrary numeric values for properties:
+                    <li>Use number values for font weights, not words.
                         <code>
                             <pre>
     // Wrong
     .example-class {
-        margin-top: .37rem;
+        font-weight: bold;
     }
 
     // Right
     .example-class {
-        margin-top: $computed-shared-value;    
-    }
-    // Where that value is used across multiple components
-    // for consistent appearance                                
+        font-weight: 500;
+    }                                
                             </pre>
                         </code>
                     </li>
-                    <li>Values less than 1 should have a leading zero  (0.5rem etc)</li>
-                    <li>Be consistent with the units used throughout your document</li>
+                    <li>Use rem units for font sizes with a px fallback.</li>
+                    <li>Set the HTML element font size to a default size (10px) so .1rem = 1px for easier to maintain calculation later on.</li>
+                </ol>
+            </div>
+        </section>
+       <section class="willow-summary">
+            <h1 class="willow-summary__heading">Media Queries</h1>
+            <div class="willow-summary__content">
+                <ol>
+                    <li>Styles should be applied mobile first, so media queries will usually apply to larger-than-mobile device sizes</li>
+                    <li>Specify in the media query  what media type it is for (screen, tv, handheld etc) so it will not be applied to all stylesheets</li>
+                    <li>Use variables to set your media queries throughout so they are easy to manage and update</li>
+                </ol>
+                    
+                <code>
+                    <pre>
+    // Wrong
+    @media (min-width: 680px) {
+       ...
+    } 
+
+    // Right
+    @media screen (min-width: 680px) {
+       ...
+    }                               
+
+    // SCSS Example - Nested inside class selectors
+    // Nest media queries within the selector but after the mobile styling
+    // Use variable for screen size value
+
+    $medium-breakpoint: 680px;
+
+    .example-class {
+        property: value;
+        property: value;
+    
+        @media screen (min-width: $medium-breakpoint) {
+            property: value;
+        } 
+    }
+                    </pre>
+                </code>
+            </div>
+       </section>
+       <section class="willow-summary">
+            <h1 class="willow-summary__heading">Values</h1>
+            <div class="willow-summary__content">
+                <ol>
+                    <li>Utilize variables to create a system of values instead of using arbitrary numbers spread throughout your code
+                        <code>
+                            <pre>
+    // Wrong
+    .a-component {
+        margin: 0.37rem;
+    }
+    
+    .b-component {
+        margin: 0.35rem;
+    }
+
+    .c-component {
+        margin: 0.2rem;
+    }
+
+    // Right
+    // These space values are golden-ratio based
+    // Systems have to be ratio based
+
+    $space-xxs: 0.3776rem;
+    $space-xs: 0.6110rem;
+    $space-s: 0.9888rem;
+    $space: 1.6rem;
+    $space-l: 2.5888rem;
+    $space-xl: 4.1886rem;
+    $space-xxl: 6.7772rem;
+
+    .a-component {
+        padding: $space;
+    }
+
+    .b-component {
+        padding: $space;
+    }
+
+    .c-component {
+        padding: $space-s;
+    }
+                              
+                            </pre>
+                        </code>
+                    </li>
+                    <li>Values less than 1 should have a leading zero</li>
                     <li>Line-height value should be <a href="https://css-tricks.com/almanac/properties/l/line-height/#article-header-id-0" target="_blank">unitless</a>:
                         <code>
                             <pre>
@@ -472,7 +535,7 @@
                             </pre>
                         </code>
                     </li>
-                    <li>Use a value of '0' instead of 'none'' to specify an element has no border or padding or margin etc:
+                    <li>Use a value of "0" instead of "none" to specify an element has no border or padding or margin etc:
                         <code>
                             <pre>
     .example-class {
@@ -481,8 +544,7 @@
                             </pre>
                         </code>
                     </li>
-                    <li>
-                        Avoid specifying units for zero values:
+                    <li>Avoid specifying units for zero values:
                         <code>
                             <pre>
      // Wrong
@@ -501,27 +563,13 @@
             </div>
        </section>
         <section class="willow-summary">
-            <h1 class="willow-summary__heading">
-                HTML, Attribute, Class and ID Selectors
-            </h1>
+            <h1 class="willow-summary__heading">Specificity and Selectors</h1>
             <div class="willow-summary__content">
-               
+                <h2>Specificity</h2>
+                <p>It is important to use selectors with low specificity. This allows styles to be easily overridable in the future. It is also important to avoid shared selectors as much as possible to prevent unintended updates in the future.</p>
                 <h2>HTML Selectors</h2>
                 <ol>
-                    <li>
-                        When styling HTML elements, use only a supplied theme or class (<a href="https://github.com/unumux/willow/tree/master/components" target="_blank">see the Willow Component Library</a> for examples of styling HTML elements):
-                        <code>
-                            <pre>
-    .component-context {
-        h1 {
-            font-weight: 700;
-        }
-    }
-                            </pre>
-                        </code>
-                    </li>
-                    <li>
-                        Do not use tag selectors unnecessarily:
+                    <li>Do not use tag selectors unless necessary:
                         <code>
                             <pre>
     // Wrong
@@ -539,11 +587,8 @@
                 </ol>
                 <h2>Attribute Selectors</h2>
                 <ol>
-                    <li>
-                        Use HTML and attribute selectors <strong>only when necessary</strong>.
-                    </li>
-                    <li>
-                        Attribute values in selectors should be surrounded by double quotes:
+                    <li>Use HTML and attribute selectors only when necessary.</li>
+                    <li>Attribute values in selectors should be surrounded by double quotes:
                         <code>
                             <pre>
     // Attribute selector:
@@ -557,77 +602,29 @@
                 </ol>                
                 <h2>Classes</h2>
                 <ol>
-                    <li>Try to use only classes to style the project</li>
-                    <li>Avoid using more than one class per element wherever possible</li>
+                    <li>Use only classes and data-attributes to style a component</li>
                 </ol>
                 <h2>IDs</h2>
                 <ol>
-                    <li>
-                        <strong>Do not use IDs as selectors</strong>
-                    </li>
+                    <li>Do not use IDs as selectors</li>
                 </ol>
             </div>
         </section>
-        <section class="willow-summary">
-            <h1 class="willow-summary__heading">
-                Specificity
-            </h1>
-            <div class="willow-summary__content">
-                <ol>
-                    <li>
-                        Use class name(s) to apply styles. Avoid using elements for as much as possible except base theme styles.
-                        <ul>
-                            <li>This decreases specificity issues, leaky css, and aids in future-proofing code.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        Scope classes to closest parent <em>only when necessary</em>.
-                    </li>
-                </ol>
-            </div>
-        </section>
+        
             <section class="willow-summary">
-            <h1 class="willow-summary__heading">
-                Nesting
-            </h1>
+            <h1 class="willow-summary__heading">Nesting</h1>
             <div class="willow-summary__content">
                 <ol>
-                    <li>
-                        Try to avoid using nested selectors.
+                    <li>Try to avoid using nested selectors.
                         <ul>
-                            <li>
-                                If you have no choice, apply styles to an element by using nested rulesets no more than three selectors deep.
-                            </li>
-                            <li>
-                                BEM principles will help restrict and enforce this convention for most use cases
-                            </li>
+                            <li>If you have no choice, apply styles to an element by using nested rulesets no more than three selectors deep.</li>
+                            <li>BEM principles will help restrict and enforce this convention for most use cases</li>
                         </ul>
                     </li>
                     
                 </ol>
             </div>
-        </section>
-            <section class="willow-summary">
-            <h1 class="willow-summary__heading">
-                JavaScript Hooks
-            </h1>
-            <div class="willow-summary__content">
-                <ol>
-                    <li>Sometimes you will need to use JS in order to hook into a module. 
-                        In that case, a separate class, prefixed with 'js' is recommended:
-                        <code>
-                            <pre>
-    class="primary-feature--headline js-toggle"
-                            </pre>
-                        </code>
-                    </li>
-                    <li>
-                        Do not use a 'js-' class to attach styles to an element.
-                    </li>
-                </ol>
-            </div>
-        </section>
-    
+        </section>    
     </main>
     <script src="scripts/site.min.js"></script>
 </body>
