@@ -93,8 +93,18 @@
                     <h1>Rule Formatting</h1>
                     <h2>Class and Variable Naming</h2>
                     <ol>
-                        <li>Use all lowercase when creating a class or variable, or when referencing a div or element:                 
-                            <pre><code>.example-class {
+                        <li>Use all lowercase letters when naming a class or variable:
+                            <pre><code>// Wrong //////////
+.exampleClass {
+    ...
+}
+
+.Example-Class {
+    ...
+}
+
+// Right /////////////
+.example-class {
     ...
 }
 
@@ -120,46 +130,46 @@ $primary-color: #00a3bb;
 // This is even BETTER better:
 $component-banner-background: $primary-color;</code></pre></li>
                         <li>Don't name variables based on context:
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 $background-color: $info-color;
 
-// Right
+// Right /////////////
 $global-alert-info-background-color: $info-color;</code></pre></li>
                     </ol>
                     <h2>Spacing</h2>
                     <ol>
                         <li>Tabs should equal 4 spaces</li>
                         <li>Use a space between the opening brace and the class name: 
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 .example-class{
     property: value;
 }
 
-// Right
+// Right /////////////
 .example-class {
     property: value;
 }</code></pre></li>
                         <li>Vendor prefixes should be right aligned:
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 .example-class {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
 
-// Right                            
+// Right /////////////                            
 .example-class {
     -webkit-border-radius: 3px;
        -moz-border-radius: 3px;
             border-radius: 3px;
 }</code></pre></li>
                         <li>Combinators should have a space before and after:
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 .example-class>.example-class {
     height: calc(50%-1rem);
 }
 
-// Right
+// Right /////////////
 .example-class > .example-class {
     height: calc(50% - 1rem);
 }</code></pre></li>
@@ -168,14 +178,14 @@ $global-alert-info-background-color: $info-color;</code></pre></li>
     width: calc(100vw / 2);
 }</code></pre></li>
                         <li>Closing selector braces should be in line with the selector name and on their own line:
-                            <pre><code>//Wrong
+                            <pre><code>// Wrong //////////
 .example-class {
     property: value;}
 
 .example-class {
     property: value;
 }
-// Right
+// Right /////////////
 .example-class {
     property: value;
 }</code></pre></li>
@@ -201,14 +211,14 @@ $global-alert-info-background-color: $info-color;</code></pre></li>
 // 8 - imports of sub-elements
 
 .example-class {
-    @extend .other-class; //1
-    @include mixin; //2
+    @extend .other-class; // 1
+    @include mixin; // 2
 
-    property: value; //3
+    property: value; // 3
     property: value;
     property: value;
 
-    //4
+    // 4
     :hover {
         property: value;
     }
@@ -217,29 +227,29 @@ $global-alert-info-background-color: $info-color;</code></pre></li>
         property: value;
     }
 
-    //5
+    // 5
     @media screen and (min-width: $medium-breakpoint) {
         property: value;
         property: value;
     }
 
-    //6
+    // 6
     a {
         ... 
     }
 
-    //7
+    // 7
     .nested-class {
         ...
     }
 
-    //8
+    // 8
     @import "child-element-1";
     @import "child-element-2";
 
 }</code></pre></li>
                         <li>Property declaration should be alphabetical
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 .example-class {
     display: block;
     padding: 10px;
@@ -248,7 +258,7 @@ $global-alert-info-background-color: $info-color;</code></pre></li>
     border-radius: 5px;
 }
 
-// Right
+// Right /////////////
 .example-class {
     background-color: #fff;
     border-radius: 5px;
@@ -256,20 +266,22 @@ $global-alert-info-background-color: $info-color;</code></pre></li>
     margin: 10px;
     padding: 10px;
 }</code></pre></li>
-                        <li>Using shorthand on some CSS properties can get confusing. Avoid shorthand declarations for these properties: 
+                        <li>Using shorthand on some CSS properties can get confusing. 
                             <ul>
-                                <li>background</li>
-                                <li>font</li>
-                                <li>list-style</li>
-                            </ul>
-                            <pre><code>// Wrong
+                                <li>Avoid shorthand declarations for these properties:
+                                    <ul>
+                                        <li>background</li>
+                                        <li>font</li>
+                                        <li>list-style</li>
+                                    </ul>
+                                    <pre><code>// Wrong //////////
 .example-class {
     background: #000 url("images/bg.jpg") no-repeat 50% 100px;
     font: italic 12px/1.5 sans-serif;
     list-style: url("images/shape.jpg") outside;
 }
 
-// Right
+// Right /////////////
 .example-class {
     background-color: #000;
     background-image: url(images/bg.jpg);
@@ -283,21 +295,46 @@ $global-alert-info-background-color: $info-color;</code></pre></li>
     list-style-image: url("images/shape.jpg");
     list-style-position: outside;
 }</code></pre></li>
-                        <li>Only include properties being used in rule declarations. For example, if there are no styles necessary for 'border-top', then do not declare it in the rule.</li> 
-                        <li>Remove empty rulesets</li> 
+                            <li>Shorthand is okay on the following properties but avoid using 3 values for margin, padding and border-radius
+                                <ul>
+                                    <li>margin</li>
+                                    <li>padding</li>
+                                    <li>border</li>
+                                    <li>border-radius</li>
+                                </ul>
+                                <pre><code>// Wrong //////////
+.example-class {
+    margin: 1em 1.5em 2em;
+}
+
+// Right /////////////
+.example-class {
+    margin: 1em;
+    //or
+    margin: 1em 1.5em;
+    //or
+    margin: 1em 1.5em 2em 1.5em;
+}</code></pre></li>
+                        </ul></li>
+                        <li>Only include properties being used in rule declarations. For example, if there are no styles necessary for "border-top", then do not declare it in the rule.</li> 
+                        <li>Remove empty rulesets
+                            <pre><code>// Wrong //////////
+.example-class {
+    //I'm empty and should be removed
+}</code></pre></li>
                         <li>Selectors and declarations should be written on separate lines:
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 .example, .example-class {
     property: value;
 }
 
-// Right
+// Right /////////////
 .example,
 .example-class {
     property: value;
 }</code></pre></li>
                         <li>Rulesets should have an empty line between them:
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 .example-class {
     property: value;
 }
@@ -305,7 +342,7 @@ $global-alert-info-background-color: $info-color;</code></pre></li>
     property: value;
 }
 
-//Right
+// Right /////////////
 .example-class {
     property: value;
 }
@@ -313,39 +350,45 @@ $global-alert-info-background-color: $info-color;</code></pre></li>
 .example-class {
     property: value;
 }</code></pre></li>
-                        <li>Use double quotes for properties:
-                            <pre><code>.example-class {
+                        <li>Use double quotes for values:
+                            <pre><code>// Wrong //////////
+.example-class {
+    background-image: url('/images/logo.jpg');
+}
+
+// Right //////////
+.example-class {
     background-image: url("/images/logo.jpg");
     font-family: "Open Sans";
 }</code></pre></li>
                         <li>All property-value pairs should be on separate lines, indented once and have an ending semi-colon:
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 .example-class {
     property: value; property: value;
 }                            
 
-// Right
+// Right /////////////
 .example-class {
     property: value;
     property: value;
 }</code></pre></li>
                         <li>Any comma-separated property values should have a space after each comma.
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 .example-class {
     property: value,value;
 }                            
 
-// Right
+// Right /////////////
 .example-class {
     property: value, value;
 }</code></pre></li>
                         <li>Do not include spaces after commas for values wrapped in parentheses
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 .example-class {
     property: value(value-1, value-2);
 }                            
 
-// Right
+// Right /////////////
 .example-class {
     property: value(value-1,value-2);
 }</code></pre></li>
@@ -359,12 +402,12 @@ $global-alert-info-background-color: $info-color;</code></pre></li>
     color: #ffffff; 
 }
 
-// Right
+// Right /////////////
 .example-class {
     //shortened 3 char hex notation
     color: #fff; 
 }</code></pre></li>
-                        <li>Do not use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" target="_blank">keyword colors</a><pre><code>// Wrong
+                        <li>Do not use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" target="_blank">keyword colors</a><pre><code>// Wrong //////////
 .example-class {
     color: MistyRose;   
 }</code></pre></li>
@@ -385,25 +428,25 @@ $global-alert-info-background-color: $info-color;</code></pre></li>
                             </ul>
                         </li>
                         <li>Write comments that are easy for other developers to understand
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 // z-index so it is on top
 .example-class {
     z-index: 100;
 }
 
-// Right
+// Right /////////////
 // z-index required because of bug with IE9 (www.link-to-the-bug-documentation.com)
 .example-class {
     z-index: 100;
 }</code></pre></li>
                         <li>Highlight purpose or context of item being explained in comment:
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 // Class Name
 .example-class {
     ...
 }
 
-// Right
+// Right /////////////
 // Wrapping element for .example-class__heading
 .example-class {
     ...
@@ -417,12 +460,12 @@ $global-alert-info-background-color: $info-color;</code></pre></li>
                     <h2>Fonts</h2>
                     <ol>
                         <li>Use number values for font weights, not words.
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 .example-class {
     font-weight: bold;
 }
 
-// Right
+// Right /////////////
 .example-class {
     font-weight: 500;
 }</code></pre></li>
@@ -438,12 +481,12 @@ $global-alert-info-background-color: $info-color;</code></pre></li>
                         <li>Specify in the media query  what media type it is for (screen, tv, handheld etc) so it will not be applied to all stylesheets</li>
                         <li>Use variables to set your media queries throughout so they are easy to manage and update</li>
                     </ol>
-<pre><code>// Wrong
+<pre><code>// Wrong //////////
 @media (min-width: 680px) {
     ...
 } 
 
-// Right
+// Right /////////////
 @media screen (min-width: 680px) {
     ...
 }                               
@@ -465,7 +508,7 @@ $medium-breakpoint: 680px;
                     <h2>Values</h2>
                     <ol>
                         <li>Utilize variables to create a system of values instead of using arbitrary numbers spread throughout your code
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 .a-component {
     margin: 0.37rem;
 }
@@ -478,9 +521,9 @@ $medium-breakpoint: 680px;
     margin: 0.2rem;
 }
 
-// Right
+// Right /////////////
 // These space values are golden-ratio based
-// Systems have to be ratio based
+// Systems do not have to be ratio based
 
 $space-xxs: 0.3776rem;
 $space-xs: 0.6110rem;
@@ -511,12 +554,12 @@ $space-xxl: 6.7772rem;
     border: 0;
 }</code></pre></li>
                         <li>Avoid specifying units for zero values:
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 .example-class {
     border: 0px;
 }
 
-// Right
+// Right /////////////
 .example-class {
     border: 0;
 }</code></pre></li>
@@ -527,12 +570,12 @@ $space-xxl: 6.7772rem;
                     <h3>HTML Selectors</h3>
                     <ol>
                         <li>Do not use tag selectors unless necessary:
-                            <pre><code>// Wrong
+                            <pre><code>// Wrong //////////
 p.example-class {
     font-weight: 700;
 }
 
-// Right
+// Right /////////////
 .example-class {
     font-weight: 700;
 }</code></pre></li>
