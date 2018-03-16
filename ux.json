@@ -9,7 +9,11 @@
         "main": "scripts/site.js"
     },
     "watch": [
-        "index.html"
+        "index.html",
+        "construction.html",
+        "formatting.html",
+        "scss.html",
+        "print.html"
     ],
     "server": true,
     "compileJs": true,
