@@ -302,15 +302,15 @@ $global-alert-info-background-color: $info-color;
                             There should be a space following the colon of the property within a rule:
                             <code>
                                 <pre>
-    //Wrong                            
-    .example-class {
-        width:calc(100vw / 2);
-    } 
-    
-    //Right
-    .example-class {
-        width: calc(100v2 / 2);
-    }
+//Wrong                            
+.example-class {
+    width:calc(100vw / 2);
+} 
+
+//Right
+.example-class {
+    width: calc(100v2 / 2);
+}
                                 </pre>
                             </code>
                         </li>
@@ -346,34 +346,34 @@ $global-alert-info-background-color: $info-color;
                         <li>If the number of arguments grows too long, consider stacking them like rulesets in a class:
                             <code>
                                 <pre>
+// Wrong //////////
+$case1(
+    $big, 
+    $little, 
+    $front, 
+    $back
+);
+
     // Wrong //////////
-    $case1(
-        $big, 
-        $little, 
-        $front, 
-        $back
-    );
+$case2($many, $more, $variables, $so, $many, $that, $this, $should, $begin, $to, $stack);
 
-     // Wrong //////////
-    $case2($many, $more, $variables, $so, $many, $that, $this, $should, $begin, $to, $stack);
+// Right //////////
+$case1($big, $little, $front, $back);
 
-    // Right //////////
-    $case1($big, $little, $front, $back);
-    
-    // Right //////////
-    $case2(
-        $many, 
-        $more, 
-        $variables, 
-        $so, 
-        $many, 
-        $that, 
-        $this, 
-        $should, 
-        $begin, 
-        $to, 
-        $stack
-    );             
+// Right //////////
+$case2(
+    $many, 
+    $more, 
+    $variables, 
+    $so, 
+    $many, 
+    $that, 
+    $this, 
+    $should, 
+    $begin, 
+    $to, 
+    $stack
+);             
                                 </pre>
                             </code>
                         </li>
@@ -948,11 +948,11 @@ h1 {
                     </ol>
                     <h3>Classes</h3>
                     <ol>
-                        <li>Use only classes and data-attributes to style a component</li>
+                        <li>Use only classes and data-attributes to style a component.</li>
                     </ol>
                     <h3>IDs</h3>
                     <ol>
-                        <li>Do not use IDs as selectors</li>
+                        <li>Do not use IDs as selectors.</li>
                     </ol>
                     <h2>Nesting</h2>
                     <ol>
@@ -960,7 +960,7 @@ h1 {
                             <ul>
                                 <li>If you have no choice, apply styles to an element by using nested rulesets no more than three
                                     selectors deep.</li>
-                                <li>BEM principles will help restrict and enforce this convention for most use cases</li>
+                                <li>BEM principles will help restrict and enforce this convention for most use cases.</li>
                             </ul>
                         </li>
                     </ol>
@@ -970,14 +970,14 @@ h1 {
                             All .SCSS component-named partials should keep the base styles in a base mixin that is contained at the top of the document:
                             <code>
                                 <pre>
-    // This is scss in an individual component root file - for ex. 'banner.scss'
-    @mixin base() {
-        text-align: center;
-    }
-        
-    .banner {
-        @include base;
-    }
+// This is scss in an individual component root file - for ex. 'banner.scss'
+@mixin base() {
+    text-align: center;
+}
+    
+.banner {
+    @include base;
+}
                                 </pre>
                             </code>
                         </li>
@@ -997,13 +997,13 @@ h1 {
                             If the mixin does not use any variables, you may call it without using parenthesis:
                             <code>
                                 <pre>
-    @mixin base() {
-        text-align: center;
-    }
-        
-    .banner {
-        @include base;
-    }
+@mixin base() {
+    text-align: center;
+}
+    
+.banner {
+    @include base;
+}
                                 </pre>
                             </code>
                         </li>
@@ -1011,10 +1011,10 @@ h1 {
                             When dealing with an unknown number of arguments in a mixin, always use an arglist rather than a list:
                             <code>
                                 <pre>
-    //This enables you to pass any number of arguments to a mixin/function                                 
-    @mixin base(bases...) {
-        text-align: center;
-    }       
+//This enables you to pass any number of arguments to a mixin/function                                 
+@mixin base(bases...) {
+    text-align: center;
+}       
                                 </pre>
                             </code>
                         </li>
@@ -1033,7 +1033,7 @@ h1 {
                         <li>Each property should have a space after each colon.</li>
                         <li>Use double-quotes if using strings in values.</li>
                         <li>The closing brace
-                            <code>)</code> ) should be on its own line and in line with the map name</li>
+                            <code>)</code> ) should be on its own line and in line with the map name.</li>
                         <li>Do not put an empty line between last value and the closing (
                             <code>)</code> ) brace.</li>
                         </li>
@@ -1050,15 +1050,15 @@ h1 {
                             You do not need to use parentheses unless necessary:
                             <code>
                                 <pre>                                
-    //Wrong
-    @if ($full-bleed == true) {
-        //...    
-    }
+//Wrong
+@if ($full-bleed == true) {
+    //...    
+}
 
-    // Right
-    @if $full-bleed {
-        //...
-    }
+// Right
+@if $full-bleed {
+    //...
+}
                                 </pre>
                             </code>
                         </li>
@@ -1066,15 +1066,15 @@ h1 {
                             Test falsey conditionals by using 'not':
                             <code>
                                 <pre>                               
-    //Wrong
-    @if base($full-bleed, $item) == null {
-        //...    
-    }
+//Wrong
+@if base($full-bleed, $item) == null {
+    //...    
+}
 
-    // Right
-    @if not base($full-bleed, item) {
-        //...
-    }
+// Right
+@if not base($full-bleed, item) {
+    //...
+}
                                 </pre>
                             </code>
 
@@ -1083,18 +1083,18 @@ h1 {
                             Conditional variables should always be on the left side of the statement, for consistency:
                             <code>
                                 <pre>                             
-    //Wrong
-    @if 42 == $base-value {
-        //...    
-    }
-    @else {
-        //...
-    }
+//Wrong
+@if 42 == $base-value {
+    //...    
+}
+@else {
+    //...
+}
 
-    // Right
-    @if $base-value == 42 {
-        //...
-    }
+// Right
+@if $base-value == 42 {
+    //...
+}
                                 </pre>
                             </code>
                         </li>
@@ -1103,20 +1103,20 @@ h1 {
                             <code>}</code> ):
                             <code>
                                 <pre>                                
-    //Wrong
-    @if $full-bleed {
-        //...    
-    }
-    @else {
-        //...
-    }
+//Wrong
+@if $full-bleed {
+    //...    
+}
+@else {
+    //...
+}
 
-    // Right
-    @if $full-bleed {
-        //...
-    } @else {
-        //...
-    }
+// Right
+@if $full-bleed {
+    //...
+} @else {
+    //...
+}
                                 </pre>
                             </code>
                         </li>
@@ -1125,23 +1125,23 @@ h1 {
                             block:
                             <code>
                                 <pre>                                
-    //Wrong
-    @function base($condition) {
-        @if $condition {
-            @return true;
-        } @else {
-            @return false;
-        }
-    }
-
-    // Right
-    @function base($condition) {
-        @if $condition {
-            @return true;
-        }
-
+//Wrong
+@function base($condition) {
+    @if $condition {
+        @return true;
+    } @else {
         @return false;
     }
+}
+
+// Right
+@function base($condition) {
+    @if $condition {
+        @return true;
+    }
+
+    @return false;
+}
                                 </pre>
                             </code>
                         </li>
