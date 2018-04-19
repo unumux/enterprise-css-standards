@@ -118,20 +118,39 @@
                     <h1>Rule Formatting</h1>
                     <h2>Class and Variable Naming</h2>
                     <ol>
+                        <li>Create variables when the value is repeated more than once, or the value is likely to be updated
+                            more than once.</li>
+                        <li>
+                            You can create local variables if necessary to prevent repeatition in code.
+                        </li>
+                        <li>
+                            Local variables should be placed at the top of the file they are being used in, one per line.
+                        </li>
+                        <li>
+                            The
+                            <code>!global</code> flag should only be used when overriding a global variable from a local scope.
+                        </li>
+                        <li>
+                            Variables across the whole SCSS codebase should be placed in their own file - this needs team discussion
+                        </li>
+                        <li>
+                            Set variables for breakpoints or create mixins that you can update easily - team discussion for actual implementation
+                        </li>
+                        <li>Avoid using 'lighten' or 'darken' - or any other SCSS color manipulation when creating variables.</li>
                         <li>Use all lowercase letters when naming a class or variable:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .exampleClass {
     ...
 }
 
-// Wrong //////////
+// Wrong //
 .Example-Class {
     ...
 }
 
-// Right //////////
+// Right //
 .example-class {
     ...
 }
@@ -144,10 +163,10 @@ $component-heading-text: #ccc;
                             Defined constants should be underscore-spaced(snakerized) and all-caps'd:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 $css-positions: (top, right, bottom, left, center);
 
-// Right //////////
+// Right //
 $CSS_POSITIONS: (top, right, bottom, left, center);
                                 </pre>
                             </code>
@@ -155,35 +174,20 @@ $CSS_POSITIONS: (top, right, bottom, left, center);
                         <li>Use dashes over camelCasing in class names. Underscores are used as part of the BEM methodology.
                             <code>
                                 <pre>
-// Wrong ////////// 
+// Wrong // 
 .thisIsBad_dontDoThis-BadStuff { 
     ... 
 }                                
                                 
-// Right ///////// This is a good -if verbose- example:
+// Right // 
+// This is a good -if verbose- example:
 .example-class__heading--postive {
     ...
 } 
                                 </pre>
                             </code>
                         </li>
-                        <li>Create variables when the value is repeated more than once, or the value is likely to be updated
-                            more than once.</li>
-                        <li>
-                            You can create local variables if necessary to prevent repeatition in code.
-                        </li>
-                        <li>
-                            Local variables should be placed at the top of the file they are being used in, one per line.
-                        </li>
-                        <li>
-                            The !global flag should only be used when overriding a global var from a local scope.
-                        </li>
-                        <li>
-                            Variables across the whole scss codebase should be placed in their own file - this needs team discussion
-                        </li>
-                        <li>
-                            Set variables for breakpoints or create mixins that you can update easily - team discussion for actual implementation
-                        </li>
+
                         <li>Variable names should not be how something looks, but rather what the something is responsible for:
                             <code>
                                 <pre>
@@ -220,10 +224,10 @@ $component-text-heading: $color-text-primary !default;
                             are no conflicts:
                             <code>
                                 <pre>
-// Wrong
+// Wrong //
 $spacing (...);
 
-// Right
+// Right //
 $willow-spacing (...);
                                 </pre>
                             </code>
@@ -231,50 +235,50 @@ $willow-spacing (...);
                         <li>Don't name variables based on context:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 $background-color: $info-color;
 
-// Right //////////
+// Right //
 $global-alert-info-background-color: $info-color;
                                 </pre>
                             </code>
                         </li>
-                        <li>Avoid using 'lighten' or 'darken' - or any other SCSS color manipulation when creating variables.</li>
                     </ol>
                     <h2>Spacing</h2>
                     <ol>
                         <li>Tabs should equal 4 spaces.</li>
+                        <li>
+                            Everything following an opening brace (
+                            <code>{</code> ) should be on a new line.
+                        </li>
                         <li>Use a space between the class name and the opening brace (
                             <code>{</code> ):
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class{
     property: value;
 }
 
-// Right //////////
+// Right //
 .example-class {
     property: value;
 }
                                 </pre>
                             </code>
                         </li>
-                        <li>
-                            Everything following an opening brace (
-                            <code>{</code> ) should be on a new line.
-                        </li>
+
                         <li>Vendor prefixes should be right aligned:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
 
-// Right //////////                            
+// Right //                            
 .example-class {
     -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
@@ -286,12 +290,12 @@ $global-alert-info-background-color: $info-color;
                         <li>Combinators should have a space before and after:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class>.example-class {
     height: calc(50%-1rem);
 }
 
-// Right //////////
+// Right //
 .example-class > .example-class {
     height: calc(50% - 1rem);
 }
@@ -302,12 +306,12 @@ $global-alert-info-background-color: $info-color;
                             There should be a space following the colon of the property within a rule:
                             <code>
                                 <pre>
-//Wrong                            
+//Wrong //                           
 .example-class {
     width:calc(100vw / 2);
 } 
 
-//Right
+//Right //
 .example-class {
     width: calc(100v2 / 2);
 }
@@ -324,15 +328,15 @@ $global-alert-info-background-color: $info-color;
                             </code>
                         </li>
                         <li>Closing selector braces (
-                            <code>}</code> ) should be in line with the selector name and on their own line immediately preceeding
-                            the last rule (or other in-class content):
+                            <code>}</code> ) should be in line with the selector name and on their own line immediately preceeding the
+                            last rule (or other in-class content):
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class {
     property: value;}
 
-// Right //////////
+// Right //
 .example-class {
     property: value;
 } // <-- This brace should be in line with the namespace
@@ -346,7 +350,7 @@ $global-alert-info-background-color: $info-color;
                         <li>If the number of arguments grows too long, consider stacking them like rulesets in a class:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 $case1(
     $big, 
     $little, 
@@ -354,13 +358,13 @@ $case1(
     $back
 );
 
-    // Wrong //////////
+// Wrong //
 $case2($many, $more, $variables, $so, $many, $that, $this, $should, $begin, $to, $stack);
 
-// Right //////////
+// Right //
 $case1($big, $little, $front, $back);
 
-// Right //////////
+// Right //
 $case2(
     $many, 
     $more, 
@@ -449,12 +453,18 @@ $case2(
 }
                                 </pre>
                             </code>
+                            <ul>
+                                <li>
+                                    <em>
+                                        Note: Nested selectors/elements/classes should be constructed the same way as the example selector.
+                                    </em>
+                                </li>
+                            </ul>
                         </li>
-                        <li>Nested selectors/elements/classes should be constructed the same way as the example selector.</li>
                         <li>Property declaration should be alphabetical
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class {
     display: block;
     padding: 10px;
@@ -463,7 +473,7 @@ $case2(
     border-radius: 5px;
 }
 
-// Right //////////
+// Right //
 .example-class {
     background-color: #fff;
     border-radius: 5px;
@@ -483,14 +493,14 @@ $case2(
                             </ul>
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class {
     background: #000 url("images/bg.jpg") no-repeat 50% 100px;
     font: italic 12px/1.5 sans-serif;
     list-style: url("images/shape.jpg") outside;
 }
 
-// Right //////////
+// Right //
 .example-class {
     background-color: #000;
     background-image: url(images/bg.jpg);
@@ -516,12 +526,12 @@ $case2(
                             </ul>
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class {
     margin: 1em 1.5em 2em;
 }
 
-// Right //////////
+// Right //
 .example-class {
     margin: 1em;
     //or
@@ -539,7 +549,7 @@ $case2(
                         <li>Remove empty rulesets:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class {
     //I'm empty and should be removed
 }
@@ -549,12 +559,12 @@ $case2(
                         <li>Selectors and declarations should be written on separate lines:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example, .example-class {
     property: value;
 }
 
-// Right //////////
+// Right //
 .example,
 .example-class {
     property: value;
@@ -565,7 +575,7 @@ $case2(
                         <li>Rulesets should have an empty line between them:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class {
     property: value;
 }
@@ -573,7 +583,7 @@ $case2(
     property: value;
 }
 
-// Right //////////
+// Right //
 .example-class {
     property: value;
 }
@@ -587,12 +597,12 @@ $case2(
                         <li>Use double quotes for values:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class {
     background-image: url('/images/logo.jpg');
 }
 
-// Right //////////
+// Right //
 .example-class {
     background-image: url("/images/logo.jpg");
     font-family: "Open Sans";
@@ -603,12 +613,12 @@ $case2(
                         <li>All property-value pairs should be on separate lines, indented once and have an ending semi-colon:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class {
     property: value; property: value;
 }                            
 
-// Right //////////
+// Right //
 .example-class {
     property: value;
     property: value;
@@ -619,12 +629,12 @@ $case2(
                         <li>Any comma-separated property values should have a space after each comma.
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class {
     property: value,value;
 }                            
 
-// Right //////////
+// Right //
 .example-class {
     property: value, value;
 }
@@ -634,12 +644,12 @@ $case2(
                         <li>Do not include spaces after commas for values wrapped in parentheses
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class {
     property: value(value-1, value-2);
 }                            
 
-// Right //////////
+// Right //
 .example-class {
     property: value(value-1,value-2);
 }
@@ -658,7 +668,7 @@ $case2(
     color: #ffffff; 
 }
 
-// Right //////////
+// Right //
 .example-class {
     //shortened 3 char hex notation
     color: #fff; 
@@ -670,7 +680,7 @@ $case2(
                             <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" target="_blank">keyword colors</a>
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class {
     color: MistyRose;   
 }
@@ -691,24 +701,24 @@ $case2(
                             </ul>
                         </li>
                         <li>Put comments on their own line above the class or declaration in question, and avoid end-of-line
-                            comments
+                            comments.
                         </li>
                         <li>Write detailed comments for code that isn't self-documenting:
                             <ul>
-                                <li>Documenting uses of z-index</li>
-                                <li>Compatibility or browser-specific hacks</li>
+                                <li>Documenting uses of z-index;</li>
+                                <li>Documenting compatibility or browser-specific hacks;</li>
                             </ul>
                         </li>
-                        <li>Write comments that are easy for other developers to understand
+                        <li>Write comments that are easy for other developers to understand:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 // z-index so it is on top
 .example-class {
     z-index: 100;
 }
 
-// Right //////////
+// Right //
 // z-index required because of bug with IE9 (www.link-to-the-bug-documentation.com)
 .example-class {
     z-index: 100;
@@ -719,13 +729,13 @@ $case2(
                         <li>Highlight purpose or context of item being explained in comment:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 // Class Name
 .example-class {
     ...
 }
 
-// Right //////////
+// Right //
 // Wrapping element for .example-class__heading
 .example-class {
     ...
@@ -749,12 +759,12 @@ $case2(
                         <li>Use number values for font weights, not words.
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class {
     font-weight: bold;
 }
 
-// Right //////////
+// Right //
 .example-class {
     font-weight: 500;
 }
@@ -776,7 +786,7 @@ html {
                     <h2>Media Queries</h2>
                     <ol>
                         <li>Styles should be applied mobile first, so media queries will usually apply to larger-than-mobile
-                            device sizes</li>
+                            device sizes.</li>
                         <li>Specify in the media query what media type it is for (screen, tv, handheld etc) so it will not be
                             applied to all stylesheets:
                             <code>
@@ -794,12 +804,12 @@ html {
                         <li>Use variables to set your media queries throughout so they are easy to manage and update:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 @media (min-width: 680px) {
     ...
 } 
 
-// Right //////////
+// Right //
 @media screen (min-width: 680px) {
     ...
 }                               
@@ -825,11 +835,12 @@ $medium-breakpoint: 680px;
 
                     <h2>Values</h2>
                     <ol>
+                        <li>Values less than 1 should have a leading zero.</li>
                         <li>Utilize variables to create a system of values instead of using arbitrary numbers spread throughout
                             your code:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .a-component {
     margin: 0.37rem;
 }
@@ -842,7 +853,7 @@ $medium-breakpoint: 680px;
     margin: 0.2rem;
 }
 
-// Right //////////
+// Right //
 // These space values are golden-ratio based
 // Systems do not have to be ratio based
 
@@ -868,7 +879,6 @@ $space-xxl: 6.7772rem;
                                 </pre>
                             </code>
                         </li>
-                        <li>Values less than 1 should have a leading zero</li>
                         <li>Line-height value should be
                             <a href="https://css-tricks.com/almanac/properties/l/line-height/#article-header-id-0" target="_blank">unitless</a>:
                             <code>
@@ -891,12 +901,12 @@ $space-xxl: 6.7772rem;
                         <li>Avoid specifying units for zero values:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 .example-class {
     border: 0px;
 }
 
-// Right //////////
+// Right //
 .example-class {
     border: 0;
 }
@@ -914,12 +924,12 @@ $space-xxl: 6.7772rem;
                         <li>Do not use tag selectors unless necessary:
                             <code>
                                 <pre>
-// Wrong //////////
+// Wrong //
 p.example-class {
     font-weight: 700;
 }
 
-// Right //////////
+// Right //
 .example-class {
     font-weight: 700;
 }
@@ -967,6 +977,22 @@ h1 {
                     <h2>SCSS Mixins</h2>
                     <ol>
                         <li>
+                            Try to use mixins whenever possible for any groups of properties that are repeated and located together.
+                        </li>
+                        <li>
+                            Use mixins when things require parameters.
+                        </li>
+                        <li>
+                            Use mixins to change size.
+                        </li>
+                        <li>
+                            Try to keep mixins as concise as possible, we do not currently have a line limit in place.
+                        </li>
+                        <li>
+                            Do not worry about creating/using a vendor prefix mixin unless you do not have access to Autoprefixer or and pre-constructed
+                            mixins.
+                        </li>
+                        <li>
                             All .SCSS component-named partials should keep the base styles in a base mixin that is contained at the top of the document:
                             <code>
                                 <pre>
@@ -980,18 +1006,6 @@ h1 {
 }
                                 </pre>
                             </code>
-                        </li>
-                        <li>
-                            Try to use mixins whenever possible for any groups of properties that are repeated and located together.
-                        </li>
-                        <li>
-                            Use mixins when things require parameters.
-                        </li>
-                        <li>
-                            Use mixins to change size.
-                        </li>
-                        <li>
-                            Try to keep mixins as concise as possible, we do not currently have a line limit in place.
                         </li>
                         <li>
                             If the mixin does not use any variables, you may call it without using parenthesis:
@@ -1017,10 +1031,6 @@ h1 {
 }       
                                 </pre>
                             </code>
-                        </li>
-                        <li>
-                            Do not worry about creating/using a vendor prefix mixin unless you do not have access to Autoprefixer or and pre-constructed
-                            mixins.
                         </li>
                     </ol>
                     <h2>SCSS Maps</h2>
@@ -1049,7 +1059,7 @@ h1 {
                         <li>
                             You do not need to use parentheses unless necessary:
                             <code>
-                                <pre>                                
+                                <pre>
 //Wrong
 @if ($full-bleed == true) {
     //...    
@@ -1065,7 +1075,7 @@ h1 {
                         <li>
                             Test falsey conditionals by using 'not':
                             <code>
-                                <pre>                               
+                                <pre>
 //Wrong
 @if base($full-bleed, $item) == null {
     //...    
@@ -1082,7 +1092,7 @@ h1 {
                         <li>
                             Conditional variables should always be on the left side of the statement, for consistency:
                             <code>
-                                <pre>                             
+                                <pre>
 //Wrong
 @if 42 == $base-value {
     //...    
@@ -1102,7 +1112,7 @@ h1 {
                             If you use an if/else combination, the else statement should begin on the same line as the closing brace(
                             <code>}</code> ):
                             <code>
-                                <pre>                                
+                                <pre>
 //Wrong
 @if $full-bleed {
     //...    
@@ -1124,7 +1134,7 @@ h1 {
                             If you need to return a different result based on an if/then, make sure the statement has a @return statement outside conditional
                             block:
                             <code>
-                                <pre>                                
+                                <pre>
 //Wrong
 @function base($condition) {
     @if $condition {
