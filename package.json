@@ -1,9 +1,9 @@
 {
     "private": true,
     "devDependencies": {
-        "@unumux/theme-unum-default": "git+https://github.com/unumux/theme-unum-default.git#develop",
+        "@unumux/theme-unum-default": "^1.0.0",
         "@unumux/ux-build-tools": "^3.6.0",
-        "@unumux/willow": "git+https://github.com/unumux/willow.git#develop"
+        "@unumux/willow": "^1.0.0"
     },
     "scripts": {
         "start": "gulp --gulpfile=node_modules/@unumux/ux-build-tools/index.js --cwd=."
