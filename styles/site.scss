@@ -25,6 +25,10 @@ pre {
     padding-bottom: 0;
 }
 
+.willow-primary-nav__item {
+    margin-top: 0;
+}
+
 .willow-primary-nav__link {
     @include set-text-style($text-style-heading-5);
     @media screen and (min-width: 828px) {
